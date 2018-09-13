@@ -14,14 +14,24 @@
 # limitations under the License.
 
 require "fluent/plugin/parser"
+require "json"
+require "yaml"
 
 module Fluent
   module Plugin
-    class JsonUnescapeParserParser < Fluent::Plugin::Parser
+    class JsonUnescapeParserParser < Fluent::Plugin::JSONParser
       Fluent::Plugin.register_parser("json_unescape_parser", self)
 
+      config_param :json_unescape_parser, :enum, list: [:oj, :yajl, :json], default: :oj
+
+
+      def configuration(conf)
+        super
+      end
+
       def parse(text)
-        yield time, record
+        r = @load_proc.call(YAML.load text)
+        yield r
       end
     end
   end
