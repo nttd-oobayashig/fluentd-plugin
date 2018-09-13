@@ -13,14 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "fluent/plugin/filter"
+require "fluent/plugin/parser"
 
 module Fluent
   module Plugin
-    class JsonUnescapeParserFilter < Fluent::Plugin::Filter
-      Fluent::Plugin.register_filter("json_unescape_parser", self)
+    class JsonUnescapeParserParser < Fluent::Plugin::Parser
+      Fluent::Plugin.register_parser("json_unescape_parser", self)
 
-      def filter(tag, time, record)
+      def parse(text)
+        yield time, record
       end
     end
   end

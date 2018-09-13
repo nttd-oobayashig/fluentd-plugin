@@ -1,6 +1,6 @@
 # fluent-plugin-json-unescape-parser
 
-[Fluentd](https://fluentd.org/) filter plugin to do something.
+[Fluentd](https://fluentd.org/) parser plugin to do something.
 
 TODO: write description for you plugin.
 
@@ -31,7 +31,7 @@ $ bundle
 You can generate configuration template:
 
 ```
-$ fluent-plugin-config-format filter json_unescape_parser
+$ fluent-plugin-config-format parser json-unescape-parser
 ```
 
 You can copy and paste generated documents here.
